@@ -36,7 +36,7 @@
   </div>
 
   <div class="container d-flex justify-content-center align-items-center">
-    <input onkeyup="search()" type="text" class="form-control" placeholder="search.....">
+    <input onkeyup="search()" type="text" class="search form-control" placeholder="search.....">
 
     <select class="form-select" aria-label=".form-select-lg example">
       <option selected value="name">name</option>
@@ -62,19 +62,49 @@
     </thead>
     <tbody>
 
-      <tr>
+      <!-- <  
         <td>100</td>
         <td>dell</td>
         <td>laptop</td>
         <td>10000</td>
         <td>good</td>
         <td>
-          <button class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
+          <button onclick="
+              var x = this.parentElement.parentElement.querySelector('td').innerHTML
+              nameInput.value = array[x].name;
+              categoryInput.value = array[x].cat;
+              priceInput.value = array[x].price;
+              descInput.value=array[x].des;
+              console.log(x);
+              document.querySelector('.create').innerHTML = 'update product';
+              array.splice(index);
+              // array[x] = {
+              //   name:nameInput.value,
+              //   cat:categoryInput.value,
+              //   price:priceInput.value,
+              //   des:descInput.value
+              // }
+              console.log(array.length);
+                console.log(array);
+              display(array);
+              // document.querySelector('.create').innerHTML = 'add product';
+
+
+
+          " class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </td>
         <td>
-          <button class=" btn btn-outline-danger"> <i class="fa-solid fa-trash"></i> </button>
+          <button onclick="
+            var x = this.parentElement.parentElement.querySelector('td').innerHTML
+            array.splice(x,1)
+            console.log(array);
+            display(array)
+          
+          
+          " class="remove btn btn-outline-danger"> <i class="fa-solid fa-trash"></i>
+          </button>
         </td>
-      </tr>
+      </tr> -->
 
     </tbody>
   </table>
