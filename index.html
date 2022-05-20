@@ -1,0 +1,90 @@
+<html>
+
+<head>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/mine.css">
+  <link rel="stylesheet" href="css/style.css">
+
+
+
+</head>
+
+<body>
+  <div class="w-75 m-auto shadow-lg p-5 mt-5">
+
+    <h1>CRUD System</h1>
+
+    <label>productName:</label>
+    <input type="text" class="form-control" id="productName">
+
+    <label>productCategory:</label>
+    <input type="text" class="form-control" id="productCategory">
+
+    <label>productPrice:</label>
+    <input type="number" class="form-control" id="productPrice">
+
+    <label>productDescription:</label>
+    <textarea class="form-control" id="productDescription"></textarea>
+
+    <button class="create btn btn-outline-info mt-4">add product</button>
+
+
+    <button class="clear btn btn-outline-info mt-4">clear</button>
+  </div>
+
+  <div class="container d-flex justify-content-center align-items-center">
+    <input onkeyup="search()" type="text" class="form-control" placeholder="search.....">
+
+    <select class="form-select" aria-label=".form-select-lg example">
+      <option selected value="name">name</option>
+      <option value="cat">category</option>
+      <option value="price">price</option>
+      <option value="des">description</option>
+    </select>
+  </div>
+
+
+
+
+  <table class="table w-75 m-auto mt-5 text-center table-striped">
+    <thead>
+      <th>index</th>
+      <th>name</th>
+      <th>category</th>
+      <th>price</th>
+      <th>description</th>
+      <th>update</th>
+      <th>delete</th>
+
+    </thead>
+    <tbody>
+
+      <tr>
+        <td>100</td>
+        <td>dell</td>
+        <td>laptop</td>
+        <td>10000</td>
+        <td>good</td>
+        <td>
+          <button class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
+        </td>
+        <td>
+          <button class=" btn btn-outline-danger"> <i class="fa-solid fa-trash"></i> </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+
+
+
+
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
