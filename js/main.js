@@ -4,34 +4,75 @@ var categoryInput = document.querySelector('#productCategory');
 var priceInput = document.querySelector('#productPrice');
 var descInput = document.querySelector('#productDescription');
 array = [];
-
-function display() {
-  for (let i = 0; i < array.length; i++) {
+// array[100] = {
+//   name: 'dell',
+//   cat: 'laptop',
+//   price: 10000,
+//   des: 'good'
+// }
+function display(arr) {
+  document.querySelector('tbody').innerHTML = '';
+  for (let i = 0; i < arr.length; i++) {
+    // console.log(arr[i]);
     document.querySelector('tbody').innerHTML += `
-        <tr>
-        <td>${i + 1}</td>
-        <td>${array[i].name}</td>
-        <td>${array[i].cat}</td>
-        <td>${array[i].price}</td>
-        <td>${array[i].des}</td>
+    <tr>
+        <td>${i}</td>
+        <td>${arr[i].name}</td>
+        <td>${arr[i].cat}</td>
+        <td>${arr[i].price}</td>
+        <td>${arr[i].des}</td>
         <td>
-          <button id=${array.length - 1} onclick = update() class="update btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
+          <button onclick="
+              var x = this.parentElement.parentElement.querySelector('td').innerHTML
+              nameInput.value = array[x].name;
+              categoryInput.value = array[x].cat;
+              priceInput.value = array[x].price;
+              descInput.value=array[x].des;
+              // console.log(x);
+              // document.querySelector('.create').innerHTML = 'update product';
+              array.splice(x,1);  
+              // array[x] = {
+              //   name:nameInput.value,
+              //   cat:categoryInput.value,
+              //   price:priceInput.value,
+              //   des:descInput.value
+              // }
+              console.log(array)
+              display(array);
+              // document.querySelector('.create').innerHTML = 'add product';
+
+
+
+          " class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </td>
         <td>
-          <button id=${array.length - 1} onclick="var index = this.getAttibute('id');
-          array.slice(index);
-          display();" class="remove btn btn-outline-danger"> <i class="fa-solid fa-trash"></i> </button>
+        <button onclick="var x = this.parentElement.parentElement.querySelector('td').innerHTML
+        array.splice(x,1)
+        display(array)
+      
+      
+      
+      
+      "
+        class="remove btn btn-outline-danger"> <i class="fa-solid fa-trash"></i>
+      </button>
         </td>
-      </tr>
-        `;
+      </tr>`;
   }
 }
+
+
+
+// clear function 
 function clear() {
   nameInput.value = '';
   categoryInput.value = '';
   priceInput.value = '';
   descInput.value = ''
 }
+
+
+document.querySelector('.clear').addEventListener('click', clear);
 
 
 // create function//
@@ -46,16 +87,23 @@ document.querySelector('.create').addEventListener('click', function () {
     price: priceInput.value,
     des: descInput.value
   }
-  console.log(array);
   array.push(product);
+  // console.log(array);
+  display(array);
   clear();
-  display();
+
 });
+
+
+
 
 // read function//
 // select the tr from the table
 // get the data from the tr
 // add the data to the sells
+
+
+
 
 // update function//
 // press update button
@@ -67,19 +115,34 @@ document.querySelector('.create').addEventListener('click', function () {
 
 
 
-// delete function//
+// remove function//
 // remove from the array
 // display in the table
-function remove() {
-  console.log(this);
 
-}
-// {
-//     var productTable = this.getAttribute('id');
-//     console.log(productTable);
-// }
 
 // search function//
 // get the option
 // get the search text
 // display in the table
+function search() {
+  var option = document.querySelector('select').value;
+  var input = document.querySelector('.search').value;
+  var chosenarray = [];
+  // console.log(`choosen array is ${chosenarray.length}`);
+  if (option == 'price') {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i][option] >= Number(input)) {
+        chosenarray.push(array[i])
+      }
+    }
+  } else {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i][option].includes(input)) {
+        chosenarray.push(array[i])
+      }
+      // console.log();
+    }
+  }
+  display(chosenarray)
+
+}
