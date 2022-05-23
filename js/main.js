@@ -22,39 +22,10 @@ function display(arr) {
         <td>${arr[i].price}</td>
         <td>${arr[i].des}</td>
         <td>
-          <button onclick="
-              var x = this.parentElement.parentElement.querySelector('td').innerHTML
-              nameInput.value = array[x].name;
-              categoryInput.value = array[x].cat;
-              priceInput.value = array[x].price;
-              descInput.value=array[x].des;
-              // console.log(x);
-              // document.querySelector('.create').innerHTML = 'update product';
-              array.splice(x,1);  
-              // array[x] = {
-              //   name:nameInput.value,
-              //   cat:categoryInput.value,
-              //   price:priceInput.value,
-              //   des:descInput.value
-              // }
-              console.log(array)
-              display(array);
-              // document.querySelector('.create').innerHTML = 'add product';
-
-
-
-          " class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
+          <button class="btn btn-outline-success"> <i class="fa-solid fa-pen-to-square"></i> </button>
         </td>
         <td>
-        <button onclick="var x = this.parentElement.parentElement.querySelector('td').innerHTML
-        array.splice(x,1)
-        display(array)
-      
-      
-      
-      
-      "
-        class="remove btn btn-outline-danger"> <i class="fa-solid fa-trash"></i>
+        <button class="remove btn btn-outline-danger"> <i class="fa-solid fa-trash"></i>
       </button>
         </td>
       </tr>`;
@@ -107,17 +78,31 @@ document.querySelector('.create').addEventListener('click', function () {
 
 // update function//
 // press update button
+//get the index
 // show the data in the cells
 // change the button to update
 // update the array
 // display in the table
+document.querySelector('.remove').addEventListener('click', function () {
+  var index = this.parentElement.parentElement.querySelector('td').innerHTML;
 
+});
 
 
 
 // remove function//
+// get index
 // remove from the array
 // display in the table
+document.querySelector('.remove').addEventListener('click', function () {
+  var index = Number(this.parentElement.parentElement.querySelector('td').innerHTML);
+  array.splice(index, 1);
+  display(array);
+
+});
+
+
+
 
 
 // search function//
